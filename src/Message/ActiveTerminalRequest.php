@@ -4,15 +4,19 @@ namespace Omnipay\Shouqianba\Message;
 
 class ActiveTerminalRequest extends BaseAbstractRequest
 {
+    protected $endpoint = 'https://vsi-api.shouqianba.com/terminal/activate';
+
     public function getData()
     {
         $this->validate(
+            'vendor_sn',
+            'vendor_key',
             'app_id',
             'code',
             'device_id'
         );
 
-        $data = [
+        return [
             'app_id' => $this->getAppId(),
             'code' => $this->getCode(),
             'device_id' => $this->getDeviceId(),
@@ -21,6 +25,23 @@ class ActiveTerminalRequest extends BaseAbstractRequest
             'os_info' => $this->getOsInfo(),
             'sdk_version' => $this->getSdkVersion(),
         ];
+    }
+
+    public function sendData($data)
+    {
+        $payload = parent::sendData($data);
+
+        return new ActiveTerminalResponse($this, $payload);
+    }
+
+    public function getSignSn()
+    {
+        return $this->getParameter('vendor_sn');
+    }
+
+    public function getSignKey()
+    {
+        return $this->getParameter('vendor_key');
     }
 
     public function setAppId($value)

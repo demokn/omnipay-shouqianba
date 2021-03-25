@@ -3,6 +3,14 @@
 namespace Omnipay\Shouqianba;
 
 use Omnipay\Common\AbstractGateway;
+use Omnipay\Shouqianba\Message\ActiveTerminalRequest;
+use Omnipay\Shouqianba\Message\CancelOrderRequest;
+use Omnipay\Shouqianba\Message\CheckinTerminalRequest;
+use Omnipay\Shouqianba\Message\PreCreateOrderRequest;
+use Omnipay\Shouqianba\Message\PurchaseRequest;
+use Omnipay\Shouqianba\Message\QueryOrderRequest;
+use Omnipay\Shouqianba\Message\QueryRefundRequest;
+use Omnipay\Shouqianba\Message\RefundOrderRequest;
 
 class Gateway extends AbstractGateway
 {
@@ -59,5 +67,45 @@ class Gateway extends AbstractGateway
     public function getNotifyUrl()
     {
         return $this->getParameter('notify_url');
+    }
+
+    public function activeTerminal(array $parameters = [])
+    {
+        return $this->createRequest(ActiveTerminalRequest::class, $parameters);
+    }
+
+    public function checkinTerminal(array $parameters = [])
+    {
+        return $this->createRequest(CheckinTerminalRequest::class, $parameters);
+    }
+
+    public function purchase(array $parameters = [])
+    {
+        return $this->createRequest(PurchaseRequest::class, $parameters);
+    }
+
+    public function preCreateOrder(array $parameters = [])
+    {
+        return $this->createRequest(PreCreateOrderRequest::class, $parameters);
+    }
+
+    public function refund(array $parameters = [])
+    {
+        return $this->createRequest(RefundOrderRequest::class, $parameters);
+    }
+
+    public function cancelOrder(array $parameters = [])
+    {
+        return $this->createRequest(CancelOrderRequest::class, $parameters);
+    }
+
+    public function queryOrder(array $parameters = [])
+    {
+        return $this->createRequest(QueryOrderRequest::class, $parameters);
+    }
+
+    public function queryRefund(array $parameters = [])
+    {
+        return $this->createRequest(QueryRefundRequest::class, $parameters);
     }
 }
