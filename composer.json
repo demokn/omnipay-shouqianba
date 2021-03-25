@@ -1,0 +1,29 @@
+{
+    "name": "demokn/omnipay-shouqianba",
+    "type": "library",
+    "description": "Shouqianba gateway for Omnipay payment processing library",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "demokn",
+            "email": "demo.knyang@gmail.com"
+        }
+    ],
+    "minimum-stability": "dev",
+    "prefer-stable": true,
+    "autoload": {
+        "psr-4": {
+            "Omnipay\\Shouqianba\\": "src/",
+            "Omnipay\\Shouqianba\\Tests\\": "tests/"
+        }
+    },
+    "require": {
+        "omnipay/common": "^3.0",
+        "php-http/guzzle7-adapter": "^1.0"
+    },
+    "config": {
+        "platform": {
+            "php": "7.2.14"
+        }
+    }
+}
