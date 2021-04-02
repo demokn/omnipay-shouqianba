@@ -11,6 +11,7 @@ use Omnipay\Shouqianba\Message\PurchaseRequest;
 use Omnipay\Shouqianba\Message\QueryOrderRequest;
 use Omnipay\Shouqianba\Message\QueryRefundRequest;
 use Omnipay\Shouqianba\Message\RefundOrderRequest;
+use Omnipay\Shouqianba\Message\RevokeOrderRequest;
 
 class Gateway extends AbstractGateway
 {
@@ -97,6 +98,11 @@ class Gateway extends AbstractGateway
     public function cancelOrder(array $parameters = [])
     {
         return $this->createRequest(CancelOrderRequest::class, $parameters);
+    }
+
+    public function revokeOrder(array $parameters = [])
+    {
+        return $this->createRequest(RevokeOrderRequest::class, $parameters);
     }
 
     public function queryOrder(array $parameters = [])
